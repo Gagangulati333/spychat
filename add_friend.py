@@ -24,9 +24,9 @@ def add_friend():
     # users input validations
     if len(new_friend['name']) > 0 and new_friend['age'] > 12 and new_friend['age'] < 50:
         friends.append(new_friend)
-        print 'Friend Added!'
+        print colored('Friend Added!','green')
     else:
-        print 'Sorry! Invalid entry. We can\'t add spy with the details you provided'
+        print colored('Sorry! Invalid entry. We can\'t add spy with the details you provided','red')
 
     # returning total no of friends.
     return len(friends)

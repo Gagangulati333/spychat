@@ -2,6 +2,8 @@ from select_friend import select_friend
 from steganography.steganography import Steganography
 from datetime import datetime
 from globals import friends
+from termcolor import colored
+
 
 def read_message():
     # choose friend from the list
@@ -18,4 +20,4 @@ def read_message():
     }
 
     friends[sender]['chats'].append(new_chat)
-    print "your secret message has been saved."
+    print colored("your secret message has been saved.",'green')

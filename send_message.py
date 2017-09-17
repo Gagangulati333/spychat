@@ -2,6 +2,8 @@ from select_friend import select_friend
 from steganography.steganography import Steganography
 from datetime import datetime
 from globals import friends
+from termcolor import colored
+
 
 def send_message():
     # choose a friend from the list.
@@ -15,7 +17,7 @@ def send_message():
     Steganography.encode(original_image, output_image, text)
 
     # Successful message
-    print "Your message encrypted successfully."
+    print colored("Your message encrypted successfully.",'green')
 
     # save the messages
     new_chat = {
@@ -25,4 +27,4 @@ def send_message():
     }
 
     friends[friend_choice]['chats'].append(new_chat)
-    print "your secret message is ready."
+    print colored("your secret message is ready.",'green')

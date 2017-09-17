@@ -9,6 +9,8 @@ def start_chat(name, age, rating, status):
     from send_message import send_message
     from add_friend import add_friend
     from read_message import read_message
+    from termcolor import colored
+
     # validating users details.
     error_message = None # variable for storing error messages.
 
@@ -50,4 +52,4 @@ def start_chat(name, age, rating, status):
                 # close application
                 show_menu = False
             else:
-                print "wrong choice try again."
+                print colored( "wrong choice try again.",'red')
