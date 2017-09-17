@@ -2,37 +2,66 @@
 from spy_details import spy
 from start_chat import  start_chat
 from termcolor import colored
+import re
 
 print "Let's get started!"
-question = "Do you want to continue as " + spy['salutation'] + " " + spy['name'] + " (Y/N): "
-existing = raw_input(question)
+repeat = True
+while repeat:
+    question = "Do you want to continue as " + spy['salutation'] + " " + spy['name'] + " (Y/N): "
+    existing = raw_input(question)
 
-# validating users input
-if (existing.upper() == "Y") :
-    # user wants to continue as default user.
-
-    # concatination of salutation and name of spy.
-    spy_name = spy['salutation'] + " " + spy['name']
-
-    # starting chat application.
-    start_chat(spy['name'], spy['age'], spy['rating'], spy['is_online'])
-elif (existing.upper() == "N"):
-    # user wants to continue as new user
-    spy['name'] = raw_input("Provide your name here :")
-    # chek wether spy has input something or not
-    if len(spy['name']) > 0:
-        spy['salutation'] = raw_input("What should we all you ? : ")
-        spy['age'] = int(raw_input("Enter your age. ?")) # converting users input to integer (typecasting)
-
-        # concatination of salutation and name of spy.
-        spy['name'] = spy['salutation'] + " " + spy['name']
-
-        spy['rating'] = float(raw_input("What is your spy rating?")) # converting users input to float (typecasting)
-        spy['is_online'] = True
-
+    # validating users input
+    if (existing.upper() == "Y") :
+        # user wants to continue as default user.
+        repeat=False
+        #  concatination of salutation and name of spy.
+        spy_name = spy['salutation'] + " " + spy['name']
         # starting chat application.
         start_chat(spy['name'], spy['age'], spy['rating'], spy['is_online'])
-    else:
-        print  colored("Invalid name. Try again.",'red')
-else:
-    print colored("Wrong choice. Try again.",'red')
+
+    elif (existing.upper() == "N"):
+    # user wants to continue as new user
+    # chek wether spy has input something or not
+        repeat=False
+        wholecheck=True
+        while(wholecheck):
+            tempcheck=True
+            patternsalutation = '^Mr|Ms$'
+            patternname = '^[A-Za-z][A-Za-z\s]+$'
+            patternage = '^[0-9]+$'
+            patternrating = '^[0-9]+\.[0-9]$'
+            while tempcheck:
+                spy['name'] = raw_input("Enter your name. ?")
+                if (re.match(patternname, spy['name']) != None):
+                    tempcheck = False
+                else:
+                    print colored("invalid name , try again", 'red')
+            tempcheck = True
+            while tempcheck:
+                spy['salutation'] = raw_input("Mr or Ms ? : ")
+                if(re.match(patternsalutation , spy['salutation']) != None):
+                    tempcheck=False
+                else:
+                    print colored("invalid salutation , try again",'red')
+            # concatination of salutation and name of spy.
+            spy['name'] = spy['salutation'] + " " + spy['name']
+            tempcheck=True
+            while tempcheck:
+                spy['age'] = raw_input("Enter your age. ?")
+                if (re.match(patternage, spy['age']) != None):
+                    tempcheck = False
+                else:
+                    print colored("invalid age , try again", 'red')
+            tempcheck = True
+            while tempcheck:
+                spy['rating'] = raw_input("What is your spy rating?")
+                if (re.match(patternrating, spy['rating']) != None):
+                    tempcheck = False
+                else:
+                    print colored("invalid rating , try again", 'red')
+            spy['is_online'] = True
+            if spy['rating'] <= 5.0 and spy['age'] > 12 and spy['age'] < 50:
+                start_chat(spy['name'], spy['age'], spy['rating'], spy['is_online'])
+                wholecheck=False
+            else:
+                print colored('invalid details try again..age should be between 12 to 50 . rating should be greater than 5.0','red')
