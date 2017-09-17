@@ -60,8 +60,5 @@ while repeat:
                 else:
                     print colored("invalid rating , try again", 'red')
             spy['is_online'] = True
-            if spy['rating'] <= 5.0 and spy['age'] > 12 and spy['age'] < 50:
-                start_chat(spy['name'], spy['age'], spy['rating'], spy['is_online'])
-                wholecheck=False
-            else:
-                print colored('invalid details try again..age should be between 12 to 50 . rating should be greater than 5.0','red')
+            wholecheck=False
+        start_chat(spy['name'], spy['age'], spy['rating'], spy['is_online'])

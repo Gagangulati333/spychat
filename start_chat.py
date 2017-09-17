@@ -14,7 +14,7 @@ def start_chat(name, age, rating, status):
     # validating users details.
     error_message = None # variable for storing error messages.
 
-    if not (age > 12 and age < 50) :
+    if  (age > 12 and age < 50) :
         # invalid age.
         error_message = "Invalid age. Provide correct details."
         print error_message
@@ -24,7 +24,13 @@ def start_chat(name, age, rating, status):
                           "Age: " + str(age) + "\n" \
                           "Rating: " + str(rating) + "\n" \
                           "Proud to have you onboard"
-        print welcome_message
+        if rating > 4.0:
+            welcome_message = welcome_message + "You are awesome"
+        elif rating > 3.0:
+            welcome_message = welcome_message + "Going Good"
+        else:
+            welcome_message = welcome_message + "Need Lots of Efforts"
+        print colored(welcome_message, 'green')
 
         # displaying menu for user.
         show_menu = True

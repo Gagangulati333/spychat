@@ -3,14 +3,27 @@ from steganography.steganography import Steganography
 from datetime import datetime
 from globals import friends
 from termcolor import colored
+import re
 
 
 def read_message():
     # choose friend from the list
     sender = select_friend()
-
-    encrypted_image = raw_input("Provide encrypted image : ")
-    secret_message = Steganography.decode(encrypted_image)
+    patternimage='[A-Za-z][0-9A-Za-Z\s]*\.jpg$'
+    temp=True
+    while temp:
+        encrypted_image = raw_input("Provide encrypted image : ")
+        if (re.match(patternimage,encrypted_image)!= None) :
+            temp=False
+        else:
+            print colored("enter Again!!!",'red')
+    try:
+        text = secret_message = Steganography.decode(encrypted_image)
+        print "message:",text
+    except TypeError:
+            print colored('image doesnot have any message','red')
+    except IOError:
+            print colored("image does not exists!!",red)
 
     # save the messages
     new_chat = {
