@@ -1,5 +1,6 @@
 # import statements.
 from globals import friends
+from termcolor import colored
 
 # add new friends.
 def add_friend():
