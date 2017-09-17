@@ -14,7 +14,7 @@ def add_friend():
     new_friend['salutation']= raw_input("Are they Mr. or Ms.?: ")
 
     # concatination.
-    new_friend['name'] = new_friend['name'] + " " + new_friend['salutation']
+    new_friend['name'] = new_friend['salutation'] + " " + new_friend['name']
 
     new_friend['age'] = int(raw_input("Age? "))
 

@@ -3,7 +3,6 @@ from globals import STATUS_MESSAGES
 
 # updated status message.
 updated_status_message = None
-
 def add_status(current_status_message):
     if current_status_message != None:
         print 'Your current status message is %s \n' % (current_status_message)
