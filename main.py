@@ -13,7 +13,6 @@ while repeat:
     # validating users input
     if (existing.upper() == "Y") :
         # user wants to continue as default user.
-        repeat=False
         #  concatination of salutation and name of spy.
         spy_name = spy['salutation'] + " " + spy['name']
         # starting chat application.

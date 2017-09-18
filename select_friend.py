@@ -6,5 +6,5 @@ def select_friend():
         print str(counter) + ". " + friend['name'] + "Age : " + str(friend['age'])
         counter = counter + 1
 
-    result = int(raw_input("Select from the list : "))
+    result = int(raw_input("Select a friend from the list : "))
     return result - 1

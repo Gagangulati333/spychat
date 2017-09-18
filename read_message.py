@@ -23,7 +23,7 @@ def read_message():
     except TypeError:
             print colored('image doesnot have any message','red')
     except IOError:
-            print colored("image does not exists!!",red)
+            print colored("image does not exist!!",red)
 
     # save the messages
     new_chat = {
